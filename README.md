@@ -1,4 +1,4 @@
-Brand new slugcat - The Leader - with his custom campaign
+Brand new slugcat - The Leader - with his custom campaign. A strong-minded slugcat, the head of his tribe.<LINE> He is forced to look for a new home in a rapidly changing world
 To be added: <br/>
 	- ~~Add custom title~~<br/>
 	- Fill OE with water and make gate accessible <br/>
