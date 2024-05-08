@@ -1,5 +1,5 @@
 Brand new slugcat - The Leader - with his custom campaign
-To be added:
+To be added: <br/>
 	- ~~Add custom title~~<br/>
 	- Fill OE with water and make gate accessible <br/>
 	- Make bitter aerie overgrown and come up with a new name for this sublocation <br/>
