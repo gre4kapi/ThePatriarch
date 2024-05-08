@@ -6,14 +6,14 @@ using static SlugBase.Features.FeatureTypes;
 
 namespace SlugTemplate
 {
-    [BepInPlugin(MOD_ID, "Slugcat Template", "0.1.0")]
+    [BepInPlugin(MOD_ID, "The Leader", "0.1.0")]
     class Plugin : BaseUnityPlugin
     {
-        private const string MOD_ID = "author.slugtemplate";
+        private const string MOD_ID = "gre4ka.theleader";
 
-        public static readonly PlayerFeature<float> SuperJump = PlayerFloat("slugtemplate/super_jump");
-        public static readonly PlayerFeature<bool> ExplodeOnDeath = PlayerBool("slugtemplate/explode_on_death");
-        public static readonly GameFeature<float> MeanLizards = GameFloat("slugtemplate/mean_lizards");
+        public static readonly PlayerFeature<float> SuperJump = PlayerFloat("theleader/super_jump");
+        public static readonly PlayerFeature<bool> ExplodeOnDeath = PlayerBool("theleader/explode_on_death");
+        public static readonly GameFeature<float> MeanLizards = GameFloat("theleader/mean_lizards");
 
 
         // Add hooks

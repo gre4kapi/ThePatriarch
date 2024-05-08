@@ -1,0 +1,26 @@
+{
+	"id": "Leader",
+	"name": "The Leader",
+	"description": "!!! AI GENERATED SHIT. In a world teeming with hostile fauna, the Leader of the slugcats stands out as a strategic genius, unparalleled in intellect and foresight. Navigating treacherous terrains and facing constant threats, the Leader leads with wisdom and cunning, forging alliances and outsmarting adversaries to ensure the survival of their species. !!! AI GENERATED SHIT",
+	"features": {
+		"color": "f0e69c",
+		"world_state": "Gourmand",
+		"timeline_before": "Rivulet",
+		"timeline_after": "Gourmand",
+		"auto_grab_batflies": true,
+		"back_spear": true,
+		"has_dreams": true,
+		"use_default_dreams": false,
+		"karma": 2,
+		"karma_cap": 2,
+		"diet": {
+			"base": "Red"
+		},
+		"food_min": 7,
+		"food_max": 8,
+		"start_room": "OE_FINAL03",
+		"select_menu_scene": "Slugcat_Leader",
+		"select_menu_scene_ascended": "Ghost_Leader",
+		"expedition_description": "First line of description.<LINE>Second line of description."
+	}
+}
