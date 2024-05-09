@@ -3,7 +3,7 @@
 	"name": "The Leader",
 	"description": "A strong-minded slugcat, the head of his tribe.<LINE> He is forced to look for a new home in a rapidly changing world",
 	"features": {
-		"color": "f0e69c",
+		"color": "F1AB73",
 		"world_state": [ "Leader", "Rivulet" ],
 		"timeline_before": "Rivulet",
 		"timeline_after": "Gourmand",
