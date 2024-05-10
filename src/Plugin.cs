@@ -17,6 +17,7 @@ namespace TheLeader
     class Plugin : BaseUnityPlugin
     {
         private const string MOD_ID = "gre4ka.theleader";
+        public const string CAT_NAME = "Leader";
 
         // Add hooks
         public void OnEnable()

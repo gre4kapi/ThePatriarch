@@ -9,6 +9,7 @@ public static partial class Hooks
     public static void ApplyHooks()
     {
         ApplyWorldHooks();
+        ApplyConvs();
     }
 
     public static void ApplyInit()
@@ -25,10 +26,12 @@ public static partial class Hooks
 
             if (IsInit) return;
             IsInit = true;
+            //Leader = new(nameof(Leader), true);
             ApplyHooks();
 
             // Init Enums
             _ = Enums.Leader;
+            Enums.RegisterValues();
         }
         catch (Exception e)
         {

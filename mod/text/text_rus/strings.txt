@@ -8,3 +8,11 @@ Leader|Вождь
 A strong-minded slugcat, the head of his tribe.<LINE> He is forced to look for a new home in a rapidly changing world|Сильный духом слизень, глава своего племени.<LINE>Он вынужден искать новый дом в быстро меняющемся мире
 gre4ka.theleader-name|Вождь
 gre4ka.theleader-description|Сильный духом слизень, глава своего племени.<LINE>Он вынужден искать новый дом в быстро меняющемся мире
+Now you can understand meeeeeee-|Теперь ты можешь меня понимаааааа-
+Giving you mark of communication wasn't good idea.|Давать тебе метку связи было не очень хорошей идеей.
+This caused some ... consequences.|Это вызвало некоторые ... последствия.
+This mark is the only thing I can offer you. I cannot help you. I can't even help myself.|Эта метка - единственное, что я могу тебе предложить. Я не могу тебе помочь. Я и себе-то не могу помочь.
+I've long since lost control of most of my facilities, and much of my processing and functions have taken on a mind of their own..| Я уже давно потерял контроль над большинством своих объектов, и большая часть моей обработки и функций обрела собственный разум..
+The most of my generators has also just abruptly reached the end of its operating life.|Срок службы большинства моих генераторов также внезапно подошел к концу.
+How you've made it this far alive, I do not know...|Как тебе удалось добраться так далеко, я не знаю...
+But if you value your life, leave and never return.|Но если ты ценишь свою жизнь, уйди и никогда не возвращайся.
