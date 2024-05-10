@@ -19,9 +19,12 @@ namespace TheLeader
         private const string MOD_ID = "gre4ka.theleader";
         public const string CAT_NAME = "Leader";
 
+        public new static ManualLogSource Logger { get; private set; } = null!;
+
         // Add hooks
         public void OnEnable()
         {
+            Logger = base.Logger;
             ApplyInit();
         }
 

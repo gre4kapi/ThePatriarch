@@ -1,16 +1,36 @@
 using MoreSlugcats;
+using UnityEngine;
 namespace TheLeader;
 
 public partial class Hooks
 {
+    private static bool notFlooded = true;
+
     public static void ApplyWorldHooks()
     {
         On.RegionGate.customOEGateRequirements += RegionGate_customOEGateRequirements;
         On.MoreSlugcats.MSCRoomSpecificScript.OE_GourmandEnding.Update += OE_GourmandEnding_Update;
         On.GateKarmaGlyph.ctor += GateKarmaGlyph_ctor;
         On.RegionGate.ctor += RegionGate_Ctor;
+        //On.Room.Update += Room_SetWaterLevel;
+        //On.RainWorldGame.
     }
+    private static void Room_SetWaterLevel(On.Room.orig_Update orig, Room room)
+    {
+        orig(room);
+        if (room.abstractRoom.name == "OE_FINAL03" && notFlooded)
+        {
+            room.waterObject.fWaterLevel += 100;
+            notFlooded = false;
 
+        }
+        else
+        {
+            var message = "Leader room name:" + room.abstractRoom.name + " DefaultWaterLevel:" + room.defaultWaterLevel + " FloatWaterLevel:" + room.floatWaterLevel + " fWater:" + room.waterObject.fWaterLevel.ToString();
+            Debug.Log(message);
+        }
+ 
+    }
     private static void OE_GourmandEnding_Update(On.MoreSlugcats.MSCRoomSpecificScript.OE_GourmandEnding.orig_Update orig, MSCRoomSpecificScript.OE_GourmandEnding self, bool eu)
     {
         return;

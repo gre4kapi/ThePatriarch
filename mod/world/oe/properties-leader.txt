@@ -9,7 +9,7 @@ overseersMax: 9
 playerGuideOverseerSpawnChance: 0
 pupSpawnChance: 0.1
 GlacialWasteland: 1
-Subregion: Outer Expanse
+Subregion: Outer Swamp
 Subregion: Sunken Pier
 Subregion: Facility Roots (Western Intake)
 Subregion: Journey's Begin

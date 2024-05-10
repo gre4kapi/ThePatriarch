@@ -136,8 +136,8 @@ public partial class Hooks
 						new Conversation.TextEvent(self, 0, Translate("Giving you mark of communication wasn't good idea."), 90),
 						new Conversation.TextEvent(self, 0, Translate("This caused some ... consequences."), 80),
 						new Conversation.TextEvent(self, 0, Translate("This mark is the only thing I can offer you. I cannot help you. I can't even help myself."), 120),
-						new Conversation.TextEvent(self, 0, Translate("I've long since lost control of most of my facilities, and much of my processing and functions have taken on a mind of their own.."), 150),
-						new Conversation.TextEvent(self, 0, Translate("The most of my generators has also just abruptly reached the end of its operating life."), 150),
+						new Conversation.TextEvent(self, 0, Translate("I've long since lost control of most of my facilities, and my construction is rotten through.."), 150),
+						new Conversation.TextEvent(self, 0, Translate("The most of my generators has also reached the end of its operating life."), 150),
 						new Conversation.TextEvent(self, 0, Translate("How you've made it this far alive, I do not know..."), 90),
 						new Conversation.TextEvent(self, 0, Translate("But if you value your life, leave and never return."), 80)
 					};

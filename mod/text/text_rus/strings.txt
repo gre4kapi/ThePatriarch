@@ -1,6 +1,7 @@
 START|НАЧИНАТЬ
 Outer Swamp|Внешняя Топь
 Journey's Begin|Начало пути
+Nesting Place|Гнездовье
 The Leader|Вождь
 The Leader|Вождь
 THE LEADER|ВОЖДЬ
@@ -12,7 +13,7 @@ Now you can understand meeeeeee-|Теперь ты можешь меня пон�
 Giving you mark of communication wasn't good idea.|Давать тебе метку связи было не очень хорошей идеей.
 This caused some ... consequences.|Это вызвало некоторые ... последствия.
 This mark is the only thing I can offer you. I cannot help you. I can't even help myself.|Эта метка - единственное, что я могу тебе предложить. Я не могу тебе помочь. Я и себе-то не могу помочь.
-I've long since lost control of most of my facilities, and much of my processing and functions have taken on a mind of their own..| Я уже давно потерял контроль над большинством своих объектов, и большая часть моей обработки и функций обрела собственный разум..
-The most of my generators has also just abruptly reached the end of its operating life.|Срок службы большинства моих генераторов также внезапно подошел к концу.
+I've long since lost control of most of my facilities, and my construction is rotten through..| Я уже давно потерял контроль над большинством своих фабрик, а моя конструкция прогнила насквозь..
+The most of my generators has also reached the end of its operating life.|Срок службы большинства моих генераторов также подошел к концу.
 How you've made it this far alive, I do not know...|Как тебе удалось добраться так далеко, я не знаю...
 But if you value your life, leave and never return.|Но если ты ценишь свою жизнь, уйди и никогда не возвращайся.

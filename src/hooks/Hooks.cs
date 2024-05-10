@@ -10,6 +10,7 @@ public static partial class Hooks
     {
         ApplyWorldHooks();
         ApplyConvs();
+        ApplyWater();
     }
 
     public static void ApplyInit()
