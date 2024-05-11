@@ -3,7 +3,7 @@
 	"name": "The Leader",
 	"version": "0.1.0",
 	"authors": "gre4ka",
-	"description": "A strong-minded slugcat, the head of his tribe.<LINE> He is forced to look for a new home in a rapidly changing world",
+	"description": "A creature with abnormally developed intelligence, the head of his tribe.<LINE> He is forced to look for a new home in a rapidly changing world",
 	"requirements": [ "slime-cubed.slugbase" ],
 	"requirements_names": [ "SlugBase" ],
 	"tags": [ "Custom Slugcat" ]

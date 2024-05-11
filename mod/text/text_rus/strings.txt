@@ -6,7 +6,7 @@ The Leader|Вождь
 The Leader|Вождь
 THE LEADER|ВОЖДЬ
 Leader|Вождь
-A strong-minded slugcat, the head of his tribe.<LINE> He is forced to look for a new home in a rapidly changing world|Сильный духом слизень, глава своего племени.<LINE>Он вынужден искать новый дом в быстро меняющемся мире
+A creature with abnormally developed intelligence, the head of his tribe.<LINE> He is forced to look for a new home in a rapidly changing world|Существо с аномально развитым интеллектом, глава своего племени.<LINE>Он вынужден искать новый дом в быстро меняющемся мире
 gre4ka.theleader-name|Вождь
 gre4ka.theleader-description|Сильный духом слизень, глава своего племени.<LINE>Он вынужден искать новый дом в быстро меняющемся мире
 Now you can understand meeeeeee-|Теперь ты можешь меня понимаааааа-

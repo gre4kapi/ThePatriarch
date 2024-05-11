@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 using BepInEx.Logging;
+using System.Collections.Generic;
+using MoreSlugcats;
 
 namespace TheLeader;
 public partial class Hooks
@@ -23,10 +25,13 @@ public partial class Hooks
     public class OE_FINAL03 : UpdatableAndDeletable
     {
         private int timer;
+        private List<AbstractCreature> npcs;
+
         public OE_FINAL03(Room room) 
         {
 
             this.room = room;
+            this.npcs = new List<AbstractCreature>();
             //Vector2 vector = new Vector2(0.0f, 0.0f);
             //System.Random rnd = new System.Random();
             //room.game.FirstAlivePlayer.realizedCreature.bodyChunks[0].HardSetPosition(vector + new Vector2(9f, 0f));
@@ -45,10 +50,22 @@ public partial class Hooks
             timer++;
             if (timer == 10)
             {
+                for (int i = 0; i < 11; i++)
+                {
+                    Vector2 vector = new Vector2(UnityEngine.Random.Range(480f, 3450f), UnityEngine.Random.Range(230f, 300f));
+                    AbstractCreature abstractCreature = new AbstractCreature(this.room.world, StaticWorld.GetCreatureTemplate(MoreSlugcatsEnums.CreatureTemplateType.SlugNPC), null, this.room.ToWorldCoordinate(vector), this.room.game.GetNewID());
+                    if (!this.room.world.game.rainWorld.setup.forcePup)
+                    {
+                        (abstractCreature.state as PlayerState).forceFullGrown = true;
+                    }
+                    this.room.abstractRoom.AddEntity(abstractCreature);
+                    abstractCreature.RealizeInRoom();
+                    this.npcs.Add(abstractCreature);
+                }
+            }
+            if (timer == 10)
+            {
                 Vector2 vector = new Vector2(350.0f, 310.0f);
-                //System.Random rnd = new System.Random();
-                //AbstractCreature slug = new AbstractCreature(room.world, StaticWorld.GetCreatureTemplate("Slugcat"), null, room.game.FirstAlivePlayer.pos, new EntityID(-1, rnd.Next(2, 999)));
-                //slug.RealizeInRoom();
                 room.game.FirstAlivePlayer.realizedCreature.bodyChunks[0].HardSetPosition(vector + new Vector2(9f, 0f));
                 room.game.FirstAlivePlayer.realizedCreature.bodyChunks[1].HardSetPosition(vector + new Vector2(-5f, 0f));
                 var message = "bebra: "+playerPos;
