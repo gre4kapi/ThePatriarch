@@ -39,7 +39,7 @@ public partial class Hooks
     private static bool RegionGate_customOEGateRequirements(On.RegionGate.orig_customOEGateRequirements orig, RegionGate self)
     {
         var result = orig(self);
-        if (self.room.game.StoryCharacter())
+        if (self.room.game.IsLeader())
         {
             return true;
         }
@@ -67,7 +67,7 @@ public partial class Hooks
         if (gate.room == null || roomName == null)
             return false;
 
-        if (!gate.room.game.StoryCharacter())
+        if (!gate.room.game.IsLeader())
             return false;
 
         // Metropolis gate

@@ -11,6 +11,7 @@ public static partial class Hooks
         ApplyWorldHooks();
         ApplyConvs();
         ApplyWater();
+        ApplySpawnHook();
     }
 
     public static void ApplyInit()

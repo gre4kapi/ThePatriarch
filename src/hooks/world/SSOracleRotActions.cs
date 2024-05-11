@@ -11,6 +11,7 @@ using Random = UnityEngine.Random;
 using IL;
 using System.Linq;
 using UnityEngine.Diagnostics;
+using On;
 
 namespace TheLeader;
 public partial class Hooks
@@ -38,11 +39,13 @@ public partial class Hooks
 	{
 		orig(self, eu);
 		var game = (RWCustom.Custom.rainWorld.processManager.currentMainLoop as RainWorldGame);
-		if (OracleCWT.TryGetValue(self, out var Counter) && self.oracleBehavior is SSOracleRotBehavior rotBehavior && rotBehavior.conversation?.events != null && rotBehavior.conversation.id == MoreSlugcatsEnums.ConversationID.Pebbles_RM_FirstMeeting)
+		if (self.room.game.IsLeader())
 		{
+			if (OracleCWT.TryGetValue(self, out var Counter) && self.oracleBehavior is SSOracleRotBehavior rotBehavior && rotBehavior.conversation?.events != null && rotBehavior.conversation.id == MoreSlugcatsEnums.ConversationID.Pebbles_RM_FirstMeeting)
+			{
 				Counter.Value++;
 				const int StartPain = 1244;
-				const int GiveMark= 1;
+				const int GiveMark = 1;
 				if (Counter.Value >= StartPain - 35 && Counter.Value <= StartPain)
 				{
 					for (int i = 1; i < 3; i++)
@@ -74,6 +77,7 @@ public partial class Hooks
 				{
 					self.room.AddObject(new PebblesGiveMark(self));
 				}
+			}
 		}
 	}
 	public static void PlayerUpdate(On.Player.orig_Update orig, Player player, bool eu)

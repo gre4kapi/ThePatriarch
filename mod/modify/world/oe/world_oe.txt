@@ -1,0 +1,17 @@
+[FIND](White,Yellow,Gourmand)
+[REPLACE](White,Yellow,Gourmand,Leader)
+[FIND](White,Gourmand)
+[REPLACE](White,Gourmand,Leader)
+[FIND](White,Gourmand)
+[REPLACE](White,Gourmand,Leader)
+[FIND](Gourmand)
+[REPLACE](Gourmand,Leader)
+
+[MERGE]
+CONDITIONAL LINKS
+
+END CONDITIONAL LINKS
+
+CREATURES
+END CREATURES
+[ENDMERGE]
