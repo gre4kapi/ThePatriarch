@@ -21,7 +21,7 @@
 		},
 		"food_min": 7,
 		"food_max": 8,
-		"start_room": "OE_FINAL03",
+		"start_room": "RM_D07",
 		"CustomConversations": true,
 		"select_menu_scene": "Slugcat_Leader",
 		"select_menu_scene_ascended": "Ghost_Leader",

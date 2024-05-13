@@ -4,7 +4,7 @@
 	"version": "0.1.0",
 	"authors": "gre4ka",
 	"description": "A creature with abnormally developed intelligence, the head of his tribe.<LINE> He is forced to look for a new home in a rapidly changing world",
-	"requirements": [ "slime-cubed.slugbase" ],
-	"requirements_names": [ "SlugBase" ],
-	"tags": [ "Custom Slugcat" ]
+	"requirements": [ "emgtx", "moreslugcats", "slime-cubed.slugbase", "crs" ],
+	"requirements_names": [ "EmgTx", "More Slugcat Expansion", "SlugBase", "Custom Region Support" ],
+	"tags": [ "Custom Slugcat", "Campaigns" ]
 }

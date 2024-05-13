@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using UnityEngine;
+using TheLeader.effects;
 
 namespace TheLeader;
 
@@ -12,6 +13,9 @@ public static partial class Hooks
         ApplyConvs();
         ApplyWater();
         ApplySpawnHook();
+        ApplyPearlHook();
+        GateInit();
+        WritedDataPearlEffect.HooksOn();
     }
 
     public static void ApplyInit()
@@ -25,7 +29,7 @@ public static partial class Hooks
     {
         try
         {
-
+            
             if (IsInit) return;
             IsInit = true;
             //Leader = new(nameof(Leader), true);
@@ -33,7 +37,7 @@ public static partial class Hooks
 
             // Init Enums
             _ = Enums.Leader;
-            Enums.RegisterValues();
+            Enums.RegisterAllValues();
         }
         catch (Exception e)
         {

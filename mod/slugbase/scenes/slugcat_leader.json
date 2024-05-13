@@ -2,11 +2,11 @@
 	"id": "Slugcat_Leader",
 	"scene_folder": "scenes/slugcat - leader",
 	"images": [
-		{ "name": "Background_test3", "pos": [360, 200], "depth": 3.7, "shader": "Basic" },
-		{ "name": "yellow bkgplants - 2",    "pos": [450, 310], "depth": 2.8, "shader": "Basic" },
-		{ "name": "Slugcat",    "pos": [470, 280], "depth": 2.2, "shader": "Basic" },
-		{ "name": "yellow vines - 3",    "pos": [410, 470], "depth": 2.0, "shader": "Basic" },
-		{ "name": "yellow fgplants - 0",    "pos": [370, 150], "depth": 1.8, "shader": "Basic" }
+		{ "name": "Background_test4", "pos": [360, 200], "depth": 3.7, "shader": "Basic" },
+		{ "name": "yellow bkgplants",    "pos": [450, 310], "depth": 2.8, "shader": "Basic" },
+		{ "name": "Slugcat",    "pos": [450, 260], "depth": 2.2, "shader": "Basic" },
+		{ "name": "yellow vines",    "pos": [410, 470], "depth": 2.0, "shader": "Basic" },
+		{ "name": "yellow fgplants",    "pos": [370, 150], "depth": 1.8, "shader": "Basic" }
 	],
 	"idle_depths": [ 2.8 ],
 	"glow_pos": [688, 484],

@@ -58,7 +58,8 @@ public partial class Hooks
                     {
                         (abstractCreature.state as PlayerState).forceFullGrown = true;
                     }
-                    this.room.abstractRoom.AddEntity(abstractCreature);
+                    //AbstractPhysicalObject pearl = new AbstractPhysicalObject(this.room.world, AbstractPhysicalObject.AbstractObjectType.DataPearl, null, this.room.game.FirstAlivePlayer.pos, this.room.game.GetNewID());
+                    //this.room.abstractRoom.AddEntity(abstractCreature);
                     abstractCreature.RealizeInRoom();
                     this.npcs.Add(abstractCreature);
                 }

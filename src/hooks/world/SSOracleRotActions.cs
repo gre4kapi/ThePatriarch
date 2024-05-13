@@ -12,12 +12,20 @@ using IL;
 using System.Linq;
 using UnityEngine.Diagnostics;
 using On;
+using System.Net.Configuration;
+using RewiredConsts;
+using UnityEngine.Rendering;
+using RWCustom;
+using System.Xml.XPath;
+using TheLeader.effects;
+using static DataPearl.AbstractDataPearl;
 
 namespace TheLeader;
 public partial class Hooks
 {
 	private static ConditionalWeakTable<Oracle, StrongBox<int>> OracleCWT = new ConditionalWeakTable<Oracle, StrongBox<int>>();
-	public static readonly GameFeature<bool> CustomConversations = GameBool("CustomConversations");
+    //private static ConditionalWeakTable<MoreSlugcats.SSOracleRotBehavior, OracleRMModule> OracleRMData { get; } = new();
+    public static readonly GameFeature<bool> CustomConversations = GameBool("CustomConversations");
 	public static Vector2 playerPos;
 	public static void ApplyConvs()
 	{
@@ -45,8 +53,13 @@ public partial class Hooks
 			{
 				Counter.Value++;
 				const int StartPain = 1244;
-				const int GiveMark = 1;
-				if (Counter.Value >= StartPain - 35 && Counter.Value <= StartPain)
+                const int GiveMark = 1;
+				const int FixPearl = 7600;
+                const int StartSecondPain = FixPearl + 700;
+                //const int FixPearl = 1;
+                const int MindRead = 3930;
+                //const int MindRead = 1;
+                if (Counter.Value >= StartPain - 35 && Counter.Value <= StartPain)
 				{
 					for (int i = 1; i < 3; i++)
 					{
@@ -77,7 +90,19 @@ public partial class Hooks
 				{
 					self.room.AddObject(new PebblesGiveMark(self));
 				}
-			}
+                if (Counter.Value == FixPearl)
+                {
+                    self.room.AddObject(new PebblesFixPearl(self));
+                }
+                if (Counter.Value == MindRead)
+                {
+                    self.room.AddObject(new PebblesMindRead(self));
+                }
+                if (Counter.Value == StartSecondPain)
+                {
+                    self.room.AddObject(new PebblesPanicDisplay(self));
+                }
+            }
 		}
 	}
 	public static void PlayerUpdate(On.Player.orig_Update orig, Player player, bool eu)
@@ -135,15 +160,32 @@ public partial class Hooks
 					self.events = new List<Conversation.DialogueEvent>() {
 						new Conversation.TextEvent(self, 1000, "...", 103),
 						new Conversation.TextEvent(self, 5, Translate("Now you can understand meeeeeee-"), 20),
-						new Conversation.TextEvent(self, 0, ".......", 60),
+						new Conversation.TextEvent(self, 0, "......", 60),
 						new Conversation.TextEvent(self, 5, "...", 40),
 						new Conversation.TextEvent(self, 0, Translate("Giving you mark of communication wasn't good idea."), 90),
 						new Conversation.TextEvent(self, 0, Translate("This caused some ... consequences."), 80),
 						new Conversation.TextEvent(self, 0, Translate("This mark is the only thing I can offer you. I cannot help you. I can't even help myself."), 120),
-						new Conversation.TextEvent(self, 0, Translate("I've long since lost control of most of my facilities, and my construction is rotten through.."), 150),
-						new Conversation.TextEvent(self, 0, Translate("The most of my generators has also reached the end of its operating life."), 150),
+						new Conversation.TextEvent(self, 0, Translate("I've long since lost control of most of my facilities, and my construction is rotten through.."), 130),
+						new Conversation.TextEvent(self, 0, Translate("The most of my generators has also reached the end of its operating life."), 110),
 						new Conversation.TextEvent(self, 0, Translate("How you've made it this far alive, I do not know..."), 90),
-						new Conversation.TextEvent(self, 0, Translate("But if you value your life, leave and never return."), 80)
+						new Conversation.TextEvent(self, 0, Translate("But if you value your life, leave and never return."), 80),
+						new Conversation.TextEvent(self, 200, Translate("..."), 20),
+						new Conversation.TextEvent(self, 0, Translate("What?"), 80),
+						new Conversation.TextEvent(self, 0, Translate("..."), 20),
+						new Conversation.TextEvent(self, 0, Translate("Looks like you smart enough for trying to use mark to ... transfer some data?"), 110),
+						new Conversation.TextEvent(self, 0, Translate("Let me just..."), 90),
+						new Conversation.TextEvent(self, 730, Translate("..."), 30),
+						new Conversation.TextEvent(self, 0, Translate("If I correctly interpret the mental images you conveyed, your home was flooded due to my activity."), 130),
+						new Conversation.TextEvent(self, 0, Translate("I think I can help you."), 20),
+						new Conversation.TextEvent(self, 0, Translate("I once met someone of your kind. This creature carried with it an important cargo and a data pearl.<LINE>I managed to copy its contents."), 150),
+						new Conversation.TextEvent(self, 0, Translate("That pearl contained a sequence that targeted the Karma Gates. Theoretically, it could open any gate by interfering its current."), 150),
+                        new Conversation.TextEvent(self, 0, Translate("I'll try to write this sequence on one of my pearls.<LINE>Wait a bit..."), 110),
+                        new Conversation.TextEvent(self, 600, Translate("..."), 20),
+                        new Conversation.TextEvent(self, 0, Translate("Sequence writing was succeeeeeeeee-"), 70),
+                        new Conversation.TextEvent(self, 0, Translate("..."), 20),
+                        new Conversation.TextEvent(self, 0, Translate("Take this pearl and find a new home for your tribe. Then for your own sake, never return here."), 130),
+
+                        new Conversation.TextEvent(self, 0, Translate("IBANAT"), 9000)
 					};
 					if (OracleCWT.TryGetValue(self.owner.oracle, out var Counter)) { Counter.Value = 0; }
 				}
@@ -167,6 +209,109 @@ public partial class Hooks
 			}
 		}
 	}
+	public class PebblesMindRead : UpdatableAndDeletable
+	{
+		Oracle self;
+		private int timer;
+		private int startDisplay = 1100;
+        private int endDisplay = 1700;
+		private int[] array = {20, 50, 100, 100, 200, 200, 300, 150 };
+		private Vector2 imagePos = new Vector2(1483.1f, 1098.5f);
+		private bool screenExists = false;
+		private bool image2Exists = false;
+		OracleProjectionScreen myScreen;
+		ProjectedImage image;
+        ProjectedImage image2;
+
+
+
+        public PebblesMindRead(Oracle self)
+		{
+			this.self = self;
+			//self.room.PlaySound(SoundID.SS_AI_Talk_1, self.firstChunk, false, 1f, 1f);
+    }
+
+		public override async void Update(bool eu)
+		{
+			if (!screenExists)
+			{
+                myScreen = new OracleProjectionScreen(self.room, null);
+				screenExists = true;
+            }
+			var game = (RWCustom.Custom.rainWorld.processManager.currentMainLoop as RainWorldGame);
+			base.Update(eu);
+
+            timer++;
+            if (timer == 1)
+			{
+                self.room.game.FirstAlivePlayer.realizedCreature.stun = 200;
+            }
+			if (timer == 1 || timer == 10 || timer == 14 || timer == 20 || timer == 35 || timer == 41 || timer == 67 || timer == 77 || timer == 90)
+			{
+                bool lockToHorizontal = Random.Range(0f, 1f) > 0.5f;
+				for (int i = 1; i < new System.Random().Next(10, 20); i++)
+				{
+					Spark sparkPlayer = new Spark(playerPos, RWCustom.Custom.rotateVectorDeg(Vector2.down * (i * 2.5f), Random.Range(0f, 360f)), Color.white, null, 10, 30);
+                    self.room.AddObject(sparkPlayer);
+                }
+                self.room.PlaySound(MoreSlugcatsEnums.MSCSoundID.Throw_FireSpear, self.room.game.FirstAlivePlayer.realizedCreature.firstChunk);
+                    //Spark sparkOracle = new Spark(self.RandomChunk.pos, RWCustom.Custom.rotateVectorDeg(Vector2.down * (i * 2.5f), Random.Range(0f, 360f)), Color.white, null, 10, 30);
+                    //self.room.AddObject(sparkOracle);
+ 
+            }
+			if (timer == (startDisplay - 60) || timer == (startDisplay - 90) || timer == (startDisplay - 120))
+			{
+                self.room.PlaySound(SoundID.SS_AI_Text, self.room.game.FirstAlivePlayer.realizedCreature.firstChunk.pos, 1.5f, 1f);
+            }
+			if (timer == startDisplay)
+			{
+				self.room.PlaySound(SoundID.SS_AI_Text, self.room.game.FirstAlivePlayer.realizedCreature.firstChunk.pos, 1.5f, 1f);
+                image = myScreen.AddImage("Home");
+				image.pos = imagePos;
+				image.setAlpha = 0.9f;
+
+            }
+			/*if (timer == (startDisplay + 100))
+			{
+                image2 = myScreen.AddImage("chieftain");
+				image2.pos = imagePos;
+				image2.setAlpha = 1.0f;
+            }*/
+			if (timer < endDisplay && timer > startDisplay && (timer % array[new System.Random().Next(0, array.Length)]) == 0)
+			{
+				imagePos = new Vector2(imagePos.x + Random.Range(-20.0f, 20.0f), imagePos.y + Random.Range(-20.0f, 20.0f));
+				image.pos = imagePos;
+				if (timer > (startDisplay + 100))
+				{
+					image2.pos = imagePos;
+				}
+			}
+			if ((timer + 50) < endDisplay && (timer % 30) == 0 && timer > startDisplay + 150)
+			{
+				if (image2Exists)
+				{
+                    self.room.PlaySound(SoundID.SS_AI_Text, self.room.game.FirstAlivePlayer.realizedCreature.firstChunk.pos, 1.5f, 1f);
+                    myScreen.RemoveImage("chieftain");
+					image2Exists = false;
+                }
+				else
+				{
+                    self.room.PlaySound(SoundID.SS_AI_Text, self.room.game.FirstAlivePlayer.realizedCreature.firstChunk.pos, 1.5f, 1f);
+                    image2 = myScreen.AddImage("chieftain");
+                    image2.pos = imagePos;
+					image.setAlpha = 1.0f;
+                    image2Exists = true;
+                }
+				
+			}
+			if (timer == endDisplay)
+			{
+                self.room.PlaySound(SoundID.SS_AI_Text, self.room.game.FirstAlivePlayer.realizedCreature.firstChunk.pos, 1.5f, 1f);
+                myScreen.RemoveImage("Home");
+				myScreen.RemoveImage("chieftain");
+			}
+		}
+	}
 	public class PebblesGiveMark : UpdatableAndDeletable
 	{
 		Oracle self;
@@ -174,7 +319,7 @@ public partial class Hooks
 		public PebblesGiveMark(Oracle self)
 		{
 			this.self = self;
-			self.room.PlaySound(SoundID.SS_AI_Talk_1, self.firstChunk, false, 1f, 1f);
+            //self.room.PlaySound(SoundID.SS_AI_Talk_1, self.firstChunk, false, 1f, 1f);
 		}
 
 		public override void Update(bool eu)
@@ -182,7 +327,7 @@ public partial class Hooks
 			var game = (RWCustom.Custom.rainWorld.processManager.currentMainLoop as RainWorldGame);
 			base.Update(eu);
 			timer++;
-			if (timer == 1)
+			if (timer == 50)
 			{
 				self.room.PlaySound(SoundID.SS_AI_Talk_4, self.firstChunk, false, 1f, 1f);
 			}
@@ -201,7 +346,7 @@ public partial class Hooks
 			if (timer == 600)
 			{
 				self.room.PlaySound(SoundID.SS_AI_Talk_1, self.firstChunk, false, 1f, 1f);
-			}
+            }
 			if (timer == 800)
 			{
 				for (int i = 1; i < 20; i++)
@@ -213,11 +358,95 @@ public partial class Hooks
 					//self.room.AddObject(sparkOracle);
 				}
 				game.GetStorySession.saveState.deathPersistentSaveData.theMark = true;
-				self.room.PlaySound(SoundID.SS_AI_Give_The_Mark_Boom, self.firstChunk, false, 1f, 1f);
+                self.room.game.FirstAlivePlayer.realizedCreature.stun = 100;
+                self.room.PlaySound(SoundID.SS_AI_Give_The_Mark_Boom, self.firstChunk, false, 1f, 1f);
 			}
 		}
 	}
-	public class PebblesPanicDisplay : UpdatableAndDeletable
+    public class PebblesFixPearl : UpdatableAndDeletable
+    {
+        Oracle self;
+        private int timer;
+        private DataPearl pearl1;
+        private DataPearl pearl;
+        private Vector2 wantPos = new Vector2(1530.1f, 800.5f);
+        private DataPearl.AbstractDataPearl writedPearl;
+
+        //var oracleModule = OracleRMData.GetValue(self, _ => new OracleRMModule());
+        public PebblesFixPearl(Oracle self)
+        {
+			this.self = self;
+            //self.room.PlaySound(SoundID.SS_AI_Talk_1, self.firstChunk, false, 1f, 1f);
+            timer = 0;
+            pearl = null;
+        }
+
+        public override void Update(bool eu)
+        {
+            base.Update(eu);
+            timer++;
+			if (timer == 1)
+			{
+				Debug.Log("Seaching for pearl to fix");
+				List<PhysicalObject>[] physicalObjects = self.room.physicalObjects;
+				for (int i = 0; i < physicalObjects.Length; i++)
+				{
+					for (int j = 0; j < physicalObjects[i].Count; j++)
+					{
+						PhysicalObject physicalObject = physicalObjects[i][j];
+						if (physicalObject is DataPearl && (!(physicalObject is HalcyonPearl)))
+						{
+                            pearl1 = physicalObject as DataPearl;
+                            if (pearl1.color.r == 0.7f)
+							{
+								pearl = physicalObject as DataPearl;
+							}
+						}
+					}
+				}
+                pearl.firstChunk.HardSetPosition(wantPos);
+				//myPearl = CustomRegions.Mod.CustomWorldMod.customPearls.GetEnumerator()
+				//pearl.AbstractDataPearl.DataPearlType = CustomRegions.Mod.CustomWorldMod.customPearls.;
+
+            }
+            if (timer > 1 && timer < 600 && pearl != null)
+            {
+                if (timer % 20 == 0)
+                {
+                    self.room.PlaySound(MoreSlugcatsEnums.MSCSoundID.Data_Bit, pearl.firstChunk.pos, 1f, 1f + Random.value * 2f);
+                    self.room.AddObject(new Explosion.ExplosionLight(pearl.firstChunk.pos, 150f, 1f, 15, Color.blue));
+					for (int i = 1; i < 4; i++)
+					{
+						self.room.AddObject(new Spark(pearl.firstChunk.pos, RWCustom.Custom.rotateVectorDeg(Vector2.down * (i * 2.5f), Random.Range(0f, 360f)), Color.blue, null, 20, 40));
+					}
+                }
+                pearl.firstChunk.vel *= Custom.LerpMap(pearl.firstChunk.vel.magnitude, 1f, 6f, 0.999f, 0.9f);
+                pearl.firstChunk.vel += Vector2.ClampMagnitude(wantPos - pearl.firstChunk.pos, 100f) / 100f * 0.4f;
+                //抵消重力
+                pearl.firstChunk.vel += 0.6f * Vector2.up;
+                //随机速度
+                pearl.firstChunk.vel += (Random.value - 0.5f) * 0.05f * Vector2.up;
+				pearl.color.r = pearl.color.r - 0.0012f;
+				pearl.color.g = pearl.color.g - 0.0012f;
+            }
+            if (timer == 600 && pearl != null)
+            {
+                self.room.PlaySound(SoundID.Moon_Wake_Up_Green_Swarmer_Flash, pearl.firstChunk.pos, 0.5f, 1f);
+                self.room.AddObject(new ElectricFullScreen.SparkFlash(pearl.firstChunk.pos, 50f));
+            }
+            if (timer == 620)
+            {
+                PearlWritedSave.pearlWrited = true;
+				pearl.RemoveFromRoom();
+				WorldCoordinate writedPearlPos = pearl.AbstractPearl.pos;
+				writedPearl = new DataPearl.AbstractDataPearl(self.room.world, AbstractPhysicalObject.AbstractObjectType.DataPearl, null, writedPearlPos, self.room.game.GetNewID(), -1, -1, null, Enums.FixedPebblesPearl);
+				writedPearl.RealizeInRoom();
+                self.room.AddObject(new WritedDataPearlEffect(pearl, self.room));
+            }
+			
+        }
+    }
+    public class PebblesPanicDisplay : UpdatableAndDeletable
 	{
 		Oracle oracle;
 		private int[] timings;
@@ -236,7 +465,7 @@ public partial class Hooks
 			oracle.stun = 300;
 			oracle.dazed = 300;
 			(oracle.oracleBehavior as SSOracleRotBehavior)?.AirVoice(SoundID.SS_AI_Talk_4);
-			oracle.room.PlaySound(SoundID.SL_AI_Pain_1, oracle.firstChunk, false, 0.7f, 0.5f);
+			oracle.room.PlaySound(SoundID.SL_AI_Pain_1, oracle.firstChunk, false, 0.7f, 0.3f);
 			oracle.bodyChunks[1].vel.x -= 5f;
 			Debug.Log(oracle.room.roomSettings.GetEffect(RoomSettings.RoomEffect.Type.DarkenLights)?.amount);
 			Debug.Log(oracle.room.roomSettings.GetEffect(RoomSettings.RoomEffect.Type.Darkness)?.amount);
@@ -325,7 +554,7 @@ public partial class Hooks
 			{
 				oracle.setGravity(0f);
 				oracle.arm.isActive = true;
-				oracle.stun = 0;
+				oracle.stun = 50;
 			}
 			if (timer > timings[3] + (int)(timings[0] / 2.1f) && timer < timings[4])
 			{

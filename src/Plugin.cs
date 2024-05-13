@@ -18,14 +18,17 @@ namespace TheLeader
     {
         private const string MOD_ID = "gre4ka.theleader";
         public const string CAT_NAME = "Leader";
+        //public static DataPearl.AbstractDataPearl.DataPearlType FixedPebblesPearl;
 
         public new static ManualLogSource Logger { get; private set; } = null!;
+        public static bool gateLock = true;
 
         // Add hooks
         public void OnEnable()
         {
             Logger = base.Logger;
             ApplyInit();
+
         }
 
         // Load any resources, such as sprites or sounds

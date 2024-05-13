@@ -74,8 +74,8 @@ public partial class Hooks
         /*if (roomName == "GATE_UW_LC")
             return true;*/
 
-        if (roomName == "GATE_SL_MS")
-            return true;
+        /*if (roomName == "GATE_SL_MS")
+            return true;*/
 
         if (roomName == "GATE_SB_OE")
             return true;
