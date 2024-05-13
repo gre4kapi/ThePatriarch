@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using UnityEngine;
 using TheLeader.effects;
+using CustomSaveTx;
 
 namespace TheLeader;
 
@@ -38,6 +39,7 @@ public static partial class Hooks
             // Init Enums
             _ = Enums.Leader;
             Enums.RegisterAllValues();
+            DeathPersistentSaveDataRx.AppplyTreatment(new PearlWritedSave(Plugin.SlugName));
         }
         catch (Exception e)
         {

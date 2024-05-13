@@ -120,7 +120,7 @@ public partial class Hooks
 				self.events = new List<Conversation.DialogueEvent>();
 				switch (Mathf.Clamp(self.State.neuronsLeft, 0, 5)) //this gets the number of neurons left for moon.
 				{
-					case 0:
+					/*case 0:
 						break;
 					case 1:
 						self.events.Add(new Conversation.TextEvent(self, 0, "...", 0));
@@ -133,10 +133,17 @@ public partial class Hooks
 						return;
 					case 4:
 						self.events.Add(new Conversation.TextEvent(self, 0, "4 NEURON CONVO!!!", 0));
-						return;
+						return;*/
 					case 5:
-						self.events.Add(new Conversation.TextEvent(self, 0, "Hewwo Wittle Cweatuwe!", 0));
-
+						self.events = new List<Conversation.DialogueEvent>() {
+						new Conversation.TextEvent(self, 0, Translate("Hello little creature."), 0),
+                        new Conversation.TextEvent(self, 0, Translate("Your shape is familiar to me. I feel as if I... might have met your kind before."), 0),
+                        new Conversation.TextEvent(self, 0, Translate("But my memory is so unreliable now."), 0),
+                        new Conversation.TextEvent(self, 0, Translate("I see that someone has given you the gift of communication. Must have been Five Pebbles, as you don't look like you can travel very far..."), 0),
+                        new Conversation.TextEvent(self, 0, Translate("He's sick, you know. Being corrupted from the inside by his own experiments.<LINE> Maybe they all are by now, who knows. We weren't designed to transcend and it drives us mad."), 0),
+                        new Conversation.TextEvent(self, 0, Translate("Hm..."), 0),
+                        new Conversation.TextEvent(self, 0, Translate("Such a familiar feeling."), 0)
+                        };
 						return;
 
 				}
@@ -183,13 +190,18 @@ public partial class Hooks
                         new Conversation.TextEvent(self, 600, Translate("..."), 20),
                         new Conversation.TextEvent(self, 0, Translate("Sequence writing was succeeeeeeeee-"), 70),
                         new Conversation.TextEvent(self, 0, Translate("..."), 20),
-                        new Conversation.TextEvent(self, 0, Translate("Take this pearl and find a new home for your tribe. Then for your own sake, never return here."), 130),
-
-                        new Conversation.TextEvent(self, 0, Translate("IBANAT"), 9000)
+                        new Conversation.TextEvent(self, 0, Translate("Take this pearl and find a new home for your tribe. Then for your own sake, never return here."), 130)
 					};
 					if (OracleCWT.TryGetValue(self.owner.oracle, out var Counter)) { Counter.Value = 0; }
 				}
-			}
+				else
+				{
+					self.events = new List<Conversation.DialogueEvent>() {
+						new Conversation.TextEvent(self, 0, Translate("You again? I have nothing for you. Leave."), 103)
+					};
+                }
+
+            }
 			else
 			{
 				self.events = new List<Conversation.DialogueEvent>() { };

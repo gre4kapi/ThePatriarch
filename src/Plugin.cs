@@ -18,6 +18,7 @@ namespace TheLeader
     {
         private const string MOD_ID = "gre4ka.theleader";
         public const string CAT_NAME = "Leader";
+        static public SlugcatStats.Name SlugName;
         //public static DataPearl.AbstractDataPearl.DataPearlType FixedPebblesPearl;
 
         public new static ManualLogSource Logger { get; private set; } = null!;

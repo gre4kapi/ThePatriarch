@@ -22,6 +22,11 @@ namespace TheLeader.effects
             {
                 self.room.AddObject(new WritedDataPearlEffect(self, self.room));
             }
+            else
+            {
+                var msg = self.AbstractPearl.dataPearlType + " AAAND " + PearlWritedSave.pearlWrited;
+                Debug.Log(msg);
+            }
         }
 
         static float dotMatrixGridWidth = 9f;
