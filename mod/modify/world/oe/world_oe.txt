@@ -1,11 +1,11 @@
 [FIND](White,Yellow,Gourmand)
-[REPLACE](White,Yellow,Gourmand,Leader)
+[REPLACE](White,Yellow,Gourmand,Patriarch)
 [FIND](White,Gourmand)
-[REPLACE](White,Gourmand,Leader)
+[REPLACE](White,Gourmand,Patriarch)
 [FIND](White,Gourmand)
-[REPLACE](White,Gourmand,Leader)
+[REPLACE](White,Gourmand,Patriarch)
 [FIND](Gourmand)
-[REPLACE](Gourmand,Leader)
+[REPLACE](Gourmand,Patriarch)
 
 [MERGE]
 CONDITIONAL LINKS
@@ -13,7 +13,7 @@ CONDITIONAL LINKS
 END CONDITIONAL LINKS
 
 CREATURES
-(Leader)OE_FINAL03 : 0-SlugNPC-5
-(Leader)OE_FINAL02 : 0-SlugNPC-5
+(Patriarch)OE_FINAL03 : 0-SlugNPC-5
+(Patriarch)OE_FINAL02 : 0-SlugNPC-5
 END CREATURES
 [ENDMERGE]

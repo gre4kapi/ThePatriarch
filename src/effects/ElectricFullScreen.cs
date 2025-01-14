@@ -5,7 +5,7 @@ using RWCustom;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace TheLeader;
+namespace ThePatriarch;
 public class ElectricFullScreen : UpdatableAndDeletable, IDrawable, INotifyWhenRoomIsReady
 {
     public List<IntVector2> closeToWallTiles;

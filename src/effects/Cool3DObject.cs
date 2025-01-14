@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Assertions;
-using static TheLeader.Mesh3D;
+using static ThePatriarch.Mesh3D;
 
-namespace TheLeader;
+namespace ThePatriarch;
 
 // i stole this code from hunter expansion
 public class Mesh3D

@@ -1,14 +1,17 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using BepInEx.Logging;
 using RWCustom;
 using UnityEngine;
 
-namespace TheLeader;
+namespace ThePatriarch;
 public partial class Hooks
 {
     private static List<Room> modifiedRooms = new List<Room>();
-    static readonly Dictionary<string, float> swampRooms = new Dictionary<string, float>()
+    //private static string filePath = @"D:\ItsAcodinTime\Source\ThePatriarch\mod\data\swampRooms.txt";
+    private static string filePath = @"D:\ItsAcodinTime\Source\ThePatriarch\mod\data\swampRooms.txt";
+    static Dictionary<string, float> swampRooms = new Dictionary<string, float>()
     {
         {"OE_FINAL03", 150f },
         {"OE_FINAL02", 800f },
@@ -56,8 +59,15 @@ public partial class Hooks
     {
         orig(self, room, camPos);
         var name = room.abstractRoom.name;
-        if (/*!modifiedRooms.Contains(room) && */room.game.IsLeader() && swampRooms.ContainsKey(name))
+        //swampRooms = new Dictionary<string, float>();
+        /*var lines = File.ReadAllLines(filePath);
+        foreach (var line in lines)
+            swampRooms.Add(line.Split(',')[0], float.Parse(line.Split(',')[1]));
+        */Debug.Log("Checking if needed to increase water level");
+        if (/*!modifiedRooms.Contains(room) && */room.game.IsPatriarch() && swampRooms.ContainsKey(name))
         {
+            var msg1 = "Room name:" + name;
+            Debug.Log("Trying to increase water level for: " + msg1);
             if (room.waterObject == null)
             {
                 room.AddWater();
@@ -67,6 +77,13 @@ public partial class Hooks
             float height = room.waterObject.fWaterLevel;
             swampRooms.TryGetValue(name, out height);
             room.waterObject.fWaterLevel = height;
+            var msg = height;
+            Debug.Log("Increased water level to: " + msg);
+        }
+        else
+        {
+            var msg2 = room.game.IsPatriarch() + " " + swampRooms.ContainsKey(name);
+            Debug.Log("PIZDEC" + msg2);
         }
     }
 }

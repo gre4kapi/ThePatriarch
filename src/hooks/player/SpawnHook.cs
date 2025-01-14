@@ -4,7 +4,7 @@ using BepInEx.Logging;
 using System.Collections.Generic;
 using MoreSlugcats;
 
-namespace TheLeader;
+namespace ThePatriarch;
 public partial class Hooks
 {
     public static void ApplySpawnHook()
@@ -15,7 +15,7 @@ public partial class Hooks
     private static void StartRoom_Script(On.RoomSpecificScript.orig_AddRoomSpecificScript orig, Room room)
     {
         orig(room);
-        if (room.game.IsLeader() && room.abstractRoom.name == "OE_FINAL03" && room.game.world.rainCycle.CycleProgression == 0 && room.game.GetStorySession.saveState.cycleNumber == 0)
+        if (room.game.IsPatriarch() && room.abstractRoom.name == "OE_FINAL03" && room.game.world.rainCycle.CycleProgression == 0 && room.game.GetStorySession.saveState.cycleNumber == 0)
         {
             room.AddObject(new OE_FINAL03(room));
             var message = "ADDED LEADER SPAWN SCRIPT";

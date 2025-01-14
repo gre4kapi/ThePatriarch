@@ -11,7 +11,7 @@ using Random = UnityEngine.Random;
 using Expedition;
 using System.Reflection;
 
-namespace TheLeader;
+namespace ThePatriarch;
 public partial class Hooks
 {
     public static bool openGate = false;
@@ -50,7 +50,7 @@ public partial class Hooks
     public static void Player_EndUpdate(On.Player.orig_UpdateMSC orig, Player self)
     {
         orig(self);
-        if (!IsLeader(self.room.game))
+        if (!IsPatriarch(self.room.game))
             return;
 
         if (self.room.IsGateRoom() && PearlWritedSave.pearlWrited && !openGate && self.room.regionGate.EnergyEnoughToOpen &&

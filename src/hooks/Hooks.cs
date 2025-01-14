@@ -1,16 +1,17 @@
 using System;
 using System.Linq;
 using UnityEngine;
-using TheLeader.effects;
+using ThePatriarch.effects;
 using CustomSaveTx;
 
-namespace TheLeader;
+namespace ThePatriarch;
 
 public static partial class Hooks
 {
     public static void ApplyHooks()
     {
         ApplyWorldHooks();
+        ApplyPlayerHooks();
         ApplyConvs();
         ApplyWater();
         ApplySpawnHook();
@@ -33,11 +34,11 @@ public static partial class Hooks
             
             if (IsInit) return;
             IsInit = true;
-            //Leader = new(nameof(Leader), true);
+            //Patriarch = new(nameof(Patriarch), true);
             ApplyHooks();
 
             // Init Enums
-            _ = Enums.Leader;
+            _ = Enums.Patriarch;
             Enums.RegisterAllValues();
             DeathPersistentSaveDataRx.AppplyTreatment(new PearlWritedSave(Plugin.SlugName));
         }

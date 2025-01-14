@@ -17,10 +17,10 @@ using RewiredConsts;
 using UnityEngine.Rendering;
 using RWCustom;
 using System.Xml.XPath;
-using TheLeader.effects;
+using ThePatriarch.effects;
 using static DataPearl.AbstractDataPearl;
 
-namespace TheLeader;
+namespace ThePatriarch;
 public partial class Hooks
 {
 	private static ConditionalWeakTable<Oracle, StrongBox<int>> OracleCWT = new ConditionalWeakTable<Oracle, StrongBox<int>>();
@@ -47,7 +47,7 @@ public partial class Hooks
 	{
 		orig(self, eu);
 		var game = (RWCustom.Custom.rainWorld.processManager.currentMainLoop as RainWorldGame);
-		if (self.room.game.IsLeader())
+		if (self.room.game.IsPatriarch())
 		{
 			if (OracleCWT.TryGetValue(self, out var Counter) && self.oracleBehavior is SSOracleRotBehavior rotBehavior && rotBehavior.conversation?.events != null && rotBehavior.conversation.id == MoreSlugcatsEnums.ConversationID.Pebbles_RM_FirstMeeting)
 			{

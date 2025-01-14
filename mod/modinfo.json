@@ -1,9 +1,9 @@
 ﻿{
-	"id": "gre4ka.theleader",
-	"name": "The Leader",
+	"id": "gre4ka.thepatriarch",
+	"name": "The Patriarch",
 	"version": "0.1.0",
 	"authors": "gre4ka",
-	"description": "A creature with abnormally developed intelligence, the head of his tribe.<LINE> He is forced to look for a new home in a rapidly changing world",
+	"description": "TEST A creature with abnormally developed intelligence, the head of his tribe.<LINE> He is forced to look for a new home in a rapidly changing world",
 	"requirements": [ "emgtx", "moreslugcats", "slime-cubed.slugbase", "crs" ],
 	"requirements_names": [ "EmgTx", "More Slugcat Expansion", "SlugBase", "Custom Region Support" ],
 	"tags": [ "Custom Slugcat", "Campaigns" ]

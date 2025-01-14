@@ -1,6 +1,6 @@
 using MoreSlugcats;
 using UnityEngine;
-namespace TheLeader;
+namespace ThePatriarch;
 
 public partial class Hooks
 {
@@ -26,7 +26,7 @@ public partial class Hooks
         }
         else
         {
-            var message = "Leader room name:" + room.abstractRoom.name + " DefaultWaterLevel:" + room.defaultWaterLevel + " FloatWaterLevel:" + room.floatWaterLevel + " fWater:" + room.waterObject.fWaterLevel.ToString();
+            var message = "Patriarch room name:" + room.abstractRoom.name + " DefaultWaterLevel:" + room.defaultWaterLevel + " FloatWaterLevel:" + room.floatWaterLevel + " fWater:" + room.waterObject.fWaterLevel.ToString();
             Debug.Log(message);
         }
  
@@ -39,7 +39,7 @@ public partial class Hooks
     private static bool RegionGate_customOEGateRequirements(On.RegionGate.orig_customOEGateRequirements orig, RegionGate self)
     {
         var result = orig(self);
-        if (self.room.game.IsLeader())
+        if (self.room.game.IsPatriarch())
         {
             return true;
         }
@@ -49,25 +49,25 @@ public partial class Hooks
     {
         orig(self, side, gate, requirement);
 
-        if (!gate.IsGateOpenForLeader()) return;
+        if (!gate.IsGateOpenForPatriarch()) return;
 
         self.requirement = RegionGate.GateRequirement.OneKarma;
     }
     private static void RegionGate_Ctor(On.RegionGate.orig_ctor orig, RegionGate self, Room room)
     {
         orig(self, room);
-        if (!self.IsGateOpenForLeader()) return;
+        if (!self.IsGateOpenForPatriarch()) return;
         self.karmaRequirements[0] = RegionGate.GateRequirement.OneKarma;
         self.karmaRequirements[1] = RegionGate.GateRequirement.OneKarma;
     }
-    public static bool IsGateOpenForLeader(this RegionGate gate)
+    public static bool IsGateOpenForPatriarch(this RegionGate gate)
     {
         var roomName = gate.room?.roomSettings?.name;
 
         if (gate.room == null || roomName == null)
             return false;
 
-        if (!gate.room.game.IsLeader())
+        if (!gate.room.game.IsPatriarch())
             return false;
 
         // Metropolis gate

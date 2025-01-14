@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace TheLeader;
+namespace ThePatriarch;
 
 public class PearlWritedSave : DeathPersistentSaveDataTx
 {

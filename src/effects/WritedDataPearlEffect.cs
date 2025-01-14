@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using Random = UnityEngine.Random;
-namespace TheLeader.effects
+namespace ThePatriarch.effects
 {
     internal class WritedDataPearlEffect : CosmeticSprite
     {

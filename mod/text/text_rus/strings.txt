@@ -2,13 +2,14 @@ START|НАЧИНАТЬ
 Outer Swamp|Внешняя Топь
 Journey's Begin|Начало пути
 Nesting Place|Гнездовье
-The Leader|Вождь
-The Leader|Вождь
-THE LEADER|ВОЖДЬ
-Leader|Вождь
-A creature with abnormally developed intelligence, the head of his tribe.<LINE> He is forced to look for a new home in a rapidly changing world|Существо с аномально развитым интеллектом, глава своего племени.<LINE>Он вынужден искать новый дом в быстро меняющемся мире
-gre4ka.theleader-name|Вождь
-gre4ka.theleader-description|Сильный духом слизень, глава своего племени.<LINE>Он вынужден искать новый дом в быстро меняющемся мире
+The Patriarch|Патриарх
+The Patriarch|Патриарх
+THE PATRIARCH|ПАТРИАРХ
+Patriarch|Патриарх
+Patriarch, an experienced and resourceful leader,<LINE> is ready to take on any challenge.|Патриарх, опытный и находчивый лидер,<LINE> готов принять любой вызов.
+A young but skilled leader of his tribe.<LINE>Make a path through the ruins to a new home|Молодой, но умелый вождь своего племени.<LINE>Проложите путь через руины к новому дому.
+gre4ka.thepatriarch-name|Патриарх
+gre4ka.thepatriarch-description|Сильный духом слизень, глава своего племени.<LINE>Он вынужден искать новый дом в быстро меняющемся мире
 Now you can understand meeeeeee-|Теперь ты можешь меня понимаааааа-
 Giving you mark of communication wasn't good idea.|Давать тебе метку связи было не очень хорошей идеей.
 This caused some ... consequences.|Это вызвало некоторые ... последствия.

@@ -12,7 +12,7 @@ using UnityEngine;
 using Expedition;
 using RWCustom;
 using System.Globalization;
-namespace TheLeader;
+namespace ThePatriarch;
 public partial class Hooks
 {
     private static BindingFlags propFlags = BindingFlags.Instance | BindingFlags.Public;
@@ -30,7 +30,7 @@ public partial class Hooks
     public static bool RegionGate_KarmaBlinkRed(On.RegionGate.orig_KarmaBlinkRed orig, RegionGate self)
     {
         bool result = orig(self);
-        if (ModManager.MSC && self.karmaRequirements[self.letThroughDir ? 0 : 1] == Enums.LeaderLock)
+        if (ModManager.MSC && self.karmaRequirements[self.letThroughDir ? 0 : 1] == Enums.PatriarchLock)
         {
             result = false;
         }
@@ -41,7 +41,7 @@ public partial class Hooks
     {
         orig.Invoke(self, eu);
         //NSH封锁的业力门
-        if (ModManager.MSC && self.requirement == Enums.LeaderLock)
+        if (ModManager.MSC && self.requirement == Enums.PatriarchLock)
         {
             self.redSine += 1f;
             self.col = new Color(1f, Mathf.Sin(self.redSine / 25f) * 0.5f + 0.5f, Mathf.Sin(self.redSine / 25f) * 0.5f + 0.5f);
@@ -134,12 +134,12 @@ public partial class Hooks
         //NSH封锁了业力门
         if (self.room.world.region.name == "NSH" &&
             self.room.abstractRoom.name.Contains("AVA") ||
-            (self.room.abstractRoom.name.Contains("DGL") && self.karmaRequirements[(!self.letThroughDir) ? 1 : 0] == Enums.LeaderLock))
+            (self.room.abstractRoom.name.Contains("DGL") && self.karmaRequirements[(!self.letThroughDir) ? 1 : 0] == Enums.PatriarchLock))
         {
             return !Plugin.gateLock;
         }
         //珍珠解锁业力门
-        if (IsLeader(self.room.game) &&
+        if (IsPatriarch(self.room.game) &&
             openGate && openGateName == self.room.abstractRoom.name && self.EnergyEnoughToOpen)
         {
             return true;

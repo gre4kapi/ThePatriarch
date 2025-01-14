@@ -5,29 +5,29 @@ using System.Runtime.CompilerServices;
 using System.Security.Permissions;
 using System.Security;
 using UnityEngine;
-using static TheLeader.Hooks;
+using static ThePatriarch.Hooks;
 using UnityEngine.Diagnostics;
 using MoreSlugcats;
 using System.Drawing.Text;
 using System.Runtime.CompilerServices;
 
-namespace TheLeader
+namespace ThePatriarch
 {
-    [BepInPlugin(MOD_ID, "The Leader", "0.1.0")]
+    [BepInPlugin(MOD_ID, "The Patriarch", "0.1.0")]
     class Plugin : BaseUnityPlugin
     {
-        private const string MOD_ID = "gre4ka.theleader";
-        public const string CAT_NAME = "Leader";
+        public const string MOD_ID = "gre4ka.thepatriarch";
+        public const string CAT_NAME = "Patriarch";
         static public SlugcatStats.Name SlugName;
         //public static DataPearl.AbstractDataPearl.DataPearlType FixedPebblesPearl;
 
-        public new static ManualLogSource Logger { get; private set; } = null!;
+        //public new static ManualLogSource Logger { get; private set; } = null!;
         public static bool gateLock = true;
 
         // Add hooks
         public void OnEnable()
         {
-            Logger = base.Logger;
+            //Logger = base.Logger;
             ApplyInit();
 
         }

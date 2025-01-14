@@ -1,7 +1,7 @@
 [MERGE]
 
 CONDITIONAL LINKS
-Leader : GATE_SL_MS : MS_WILLSNAGGING01 : MS_WILLSNAGGING01ld
+Patriarch : GATE_SL_MS : MS_WILLSNAGGING01 : MS_WILLSNAGGING01ld
 END CONDITIONAL LINKS
 
 ROOMS
@@ -38,15 +38,15 @@ MS_bitterstartld : MS_X02ld
 END ROOMS
 
 CREATURES
-(Leader)MS_bitteraerie1ld : 5-White
-(Leader)MS_bitterventsld : 3-White
-(Leader)MS_bitteraeriepipeuld : 4-CicadaB-3, 4-CicadaA-2
-(Leader)MS_bitteraerie5ld : 2-Blue
-(Leader)MS_splitsewersld : 11-Tentacle Plant
-(Leader)MS_bitterpipeld : 3-Eel
-(Leader)MS_bitterentranceld : 5-Tentacle Plant, 10-Blue, 9-CicadaB-3, 9-CicadaA-2
-(Leader)MS_COMMSld : 2-Yellow-4, 6-Yellow-2
-(Leader)MS_X02ld : 3-Tentacle Plant
+(Patriarch)MS_bitteraerie1ld : 5-White
+(Patriarch)MS_bitterventsld : 3-White
+(Patriarch)MS_bitteraeriepipeuld : 4-CicadaB-3, 4-CicadaA-2
+(Patriarch)MS_bitteraerie5ld : 2-Blue
+(Patriarch)MS_splitsewersld : 11-Tentacle Plant
+(Patriarch)MS_bitterpipeld : 3-Eel
+(Patriarch)MS_bitterentranceld : 5-Tentacle Plant, 10-Blue, 9-CicadaB-3, 9-CicadaA-2
+(Patriarch)MS_COMMSld : 2-Yellow-4, 6-Yellow-2
+(Patriarch)MS_X02ld : 3-Tentacle Plant
 END CREATURES
 
 [ENDMERGE]
