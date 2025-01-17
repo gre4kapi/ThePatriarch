@@ -5,8 +5,8 @@
 	"features": {
 		"color": "F1AB73",
 		"world_state": [ "Patriarch", "Rivulet" ],
-		"timeline_before": "Rivulet",
-		"timeline_after": "Gourmand",
+		"timeline_before": "Saint",
+		"timeline_after": "Rivulet",
 		"auto_grab_batflies": true,
 		"can_maul": true,
 		"maul_damage": 0.5,

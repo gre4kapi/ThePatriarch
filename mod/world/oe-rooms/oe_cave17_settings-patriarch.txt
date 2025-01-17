@@ -13,5 +13,5 @@ EffectColorA: 6
 Effects: Darkness-0.09782609-11-132, AboveCloudsView-1-287-116, 
 PlacedObjects: LanternOnStick><352.6229><236.8456><60~-227, LanternOnStick><497.559><231.9408><-35~-206, 
 AmbientSounds: OMNI><SO_WAT-MoreDrips.ogg><780.4328><563.4188><0.5><1, OMNI><AM_WIN-SubWnd.ogg><785.3044><489.542><0.4130435><1, 
-FadePalette: 3, 0.6195652
+FadePalette: 3, 0.3567634
 WetTerrain: OFF

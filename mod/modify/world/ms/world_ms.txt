@@ -1,52 +1,19 @@
 [MERGE]
 
 CONDITIONAL LINKS
-Patriarch : GATE_SL_MS : MS_WILLSNAGGING01 : MS_WILLSNAGGING01ld
+Patriarch : REPLACEROOM : MS_bitteredge : MS_bitteredgept
+
+Patriarch : MS_FARSIDE : MS_ARTERY05 : DISCONNECTED
+Patriarch : MS_FARSIDE : MS_EAST01FR : DISCONNECTED
+
+Patriarch : MS_ARTERY05 : MS_FARSIDE : MS_FARSIDEpt
+Patriarch : MS_EAST01FR : MS_FARSIDE : MS_FARSIDEpt
 END CONDITIONAL LINKS
 
 ROOMS
-MS_WILLSNAGGING01ld : GATE_SL_MS, MS_S07ld, MS_aeriestartld
-MS_S07ld : MS_WILLSNAGGING01ld : SHELTER
-MS_aeriestartld : MS_WILLSNAGGING01ld, MS_startsewersld
-MS_startsewersld : MS_aeriestartld, MS_splitsewersld
-MS_splitsewersld : DISCONNECTED, MS_bitteraerie1ld, MS_bitterventsld, MS_startsewersld, MS_pumpsld, MS_bitteraccessld, DISCONNECTED, MS_scavtraderld
-MS_scavtraderld : MS_splitsewersld : SCAVTRADER
-MS_bitteraerie1ld : MS_bitteraerie4ld, MS_bitteraeriepipeuld, MS_splitsewersld
-MS_bitteraerie2ld : MS_bitteraerie3ld, MS_bittershelterld, MS_bitterundergroundld
-MS_bitteraerie3ld : MS_bitteraerie5ld, MS_bitteraerie2ld
-MS_bitteraerie4ld : MS_bitteraerie5ld, DISCONNECTED, MS_bittermironestld, MS_bitteraerie1ld
-MS_bitteraerie5ld : MS_bitteraerie3ld, MS_bitteraerie4ld
-MS_bittermironestld : MS_bitteraerie4ld
-MS_bittershelterld : MS_bitteraerie2ld : SHELTER
-MS_pumpsld : MS_bitterundergroundld, MS_splitsewersld, MS_Jtrapld
-MS_sewerbridgeld : MS_bitteraccessld, MS_bitterpipeld
-MS_bitteraerie6ld : MS_COMMSld, MS_bitteraeriedownld
-MS_COMMSld : MS_bitteraerie6ld
-MS_bitterpipeld : MS_sewerbridgeld, MS_Jtrapld
-MS_bitterventsld : MS_splitsewersld, MS_bitteraccessld
-MS_bitteraccessld : MS_bitterventsld, MS_splitsewersld, MS_sewerbridgeld, DISCONNECTED
-MS_bitterundergroundld : MS_bitteraerie2ld, MS_bitteredgeld, MS_pumpsld, MS_bitterentranceld
-MS_bitteredgeld : MS_bitteraeriedownld, MS_bitterundergroundld, MS_bitterentranceld, MS_bittersafeld
-MS_bitteraeriedownld : MS_bitteraerie6ld, MS_bitteredgeld
-MS_bitteraeriepipeuld : MS_bitteraerie1ld, MS_bitterentranceld
-MS_Jtrapld : MS_pumpsld, MS_bitterentranceld, MS_bitterpipeld
-MS_bitterentranceld : MS_bitteraeriepipeuld, DISCONNECTED, MS_bitteredgeld, MS_bitterundergroundld, MS_Jtrapld
-MS_bittersafeld : MS_bitteredgeld, MS_X02ld, MS_S10ld
-MS_S10ld : MS_bittersafeld : SHELTER
-MS_X02ld : MS_bitterstartld, MS_bittersafeld
-MS_bitterstartld : MS_X02ld
+MS_bitteredge : MS_bitteraeriedown, MS_bitterunderground, MS_WALL12, MS_bitterentrance, MS_bittersafe
+MS_WALL12 : MS_bitteredge, MS_FARSIDEpt
+MS_FARSIDEpt : MS_WALL12, MS_EAST01FR, DISCONNECTED, MS_ARTERY05 : SWARMROOM
 END ROOMS
-
-CREATURES
-(Patriarch)MS_bitteraerie1ld : 5-White
-(Patriarch)MS_bitterventsld : 3-White
-(Patriarch)MS_bitteraeriepipeuld : 4-CicadaB-3, 4-CicadaA-2
-(Patriarch)MS_bitteraerie5ld : 2-Blue
-(Patriarch)MS_splitsewersld : 11-Tentacle Plant
-(Patriarch)MS_bitterpipeld : 3-Eel
-(Patriarch)MS_bitterentranceld : 5-Tentacle Plant, 10-Blue, 9-CicadaB-3, 9-CicadaA-2
-(Patriarch)MS_COMMSld : 2-Yellow-4, 6-Yellow-2
-(Patriarch)MS_X02ld : 3-Tentacle Plant
-END CREATURES
 
 [ENDMERGE]

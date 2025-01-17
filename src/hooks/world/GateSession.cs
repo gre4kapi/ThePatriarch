@@ -50,7 +50,7 @@ public partial class Hooks
     public static void Player_EndUpdate(On.Player.orig_UpdateMSC orig, Player self)
     {
         orig(self);
-        if (!IsPatriarch(self.room.game))
+        if (self.room.game.IsPatriarch())
             return;
 
         if (self.room.IsGateRoom() && PearlWritedSave.pearlWrited && !openGate && self.room.regionGate.EnergyEnoughToOpen &&

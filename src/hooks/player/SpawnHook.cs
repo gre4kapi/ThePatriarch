@@ -20,6 +20,11 @@ public partial class Hooks
             room.AddObject(new OE_FINAL03(room));
             var message = "ADDED LEADER SPAWN SCRIPT";
             Debug.Log(message);
+
+            room.game.GetStorySession.saveState.miscWorldSaveData.moonGivenRobe = true;
+            room.game.GetStorySession.saveState.miscWorldSaveData.moonHeartRestored = true;
+            //game.GetStorySession.saveState.miscWorldSaveData.pebblesEnergyTaken = true;
+
         }
     }
     public class OE_FINAL03 : UpdatableAndDeletable
@@ -69,8 +74,8 @@ public partial class Hooks
                 Vector2 vector = new Vector2(350.0f, 310.0f);
                 room.game.FirstAlivePlayer.realizedCreature.bodyChunks[0].HardSetPosition(vector + new Vector2(9f, 0f));
                 room.game.FirstAlivePlayer.realizedCreature.bodyChunks[1].HardSetPosition(vector + new Vector2(-5f, 0f));
-                var message = "bebra: "+playerPos;
-                Debug.Log(message);
+                //var message = "bebra: "+ playerPos;
+                //Debug.Log(message);
             }
             if (timer == 300)
             {

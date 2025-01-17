@@ -3,6 +3,9 @@
     <PropertyGroup>
         <TargetFramework>net48</TargetFramework>
         <LangVersion>11</LangVersion>
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>portable</DebugType>
+		<Nullable>enable</Nullable>
     </PropertyGroup>
     
     <ItemGroup>
@@ -11,12 +14,18 @@
         </Reference>
     </ItemGroup>
     
+    <ItemGroup>
+      <Compile Remove="hooks\world\OracleHooks.cs" />
+    </ItemGroup>
+    
     <Target Name="GenerateMod" AfterTargets="PostBuildEvent">
 		<ItemGroup>
 			<RemovePlugins Include="../mod/plugins/*.dll" />
+			<RemovePlugins Include="../mod/plugins/*.pdb" />
 		</ItemGroup>
 		<ItemGroup>
 			<CopyPlugins Include="$(TargetPath)" />
+			<CopyPlugins Include="$(TargetPath)/../ThePatriarch.pdb" />
 		</ItemGroup>
 		
         <Delete Files="@(RemovePlugins)" />

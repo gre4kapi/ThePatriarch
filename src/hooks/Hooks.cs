@@ -12,7 +12,7 @@ public static partial class Hooks
     {
         ApplyWorldHooks();
         ApplyPlayerHooks();
-        ApplyConvs();
+        SetupOracles();
         ApplyWater();
         ApplySpawnHook();
         ApplyPearlHook();

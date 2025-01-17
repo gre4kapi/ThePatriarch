@@ -6,6 +6,7 @@ namespace ThePatriarch;
 
 public static class Enums
 {
+    public static bool IsPatriarch(this RainWorldGame? game) => game?.StoryCharacter == Enums.Patriarch;
     public static SlugcatStats.Name Patriarch = new(nameof(Patriarch), false);
     public static bool registed = false;
 

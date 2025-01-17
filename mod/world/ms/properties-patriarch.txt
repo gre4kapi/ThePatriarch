@@ -16,7 +16,7 @@ Subregion: Submerged Superstructure
 Subregion: Submerged Superstructure (The Heart)
 Subregion: Auxiliary Transmission Array
 Subregion: Submerged Superstructure (Vents)
-Subregion: Nesting Place
+Subregion: Bitter Aerie
 Broken Shelters: White: MS_S04
 Broken Shelters: Yellow: MS_S04
 Broken Shelters: Red: MS_S04

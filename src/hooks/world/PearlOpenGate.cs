@@ -139,8 +139,7 @@ public partial class Hooks
             return !Plugin.gateLock;
         }
         //珍珠解锁业力门
-        if (IsPatriarch(self.room.game) &&
-            openGate && openGateName == self.room.abstractRoom.name && self.EnergyEnoughToOpen)
+        if (self.room.game.IsPatriarch() && openGate && openGateName == self.room.abstractRoom.name && self.EnergyEnoughToOpen)
         {
             return true;
         }
