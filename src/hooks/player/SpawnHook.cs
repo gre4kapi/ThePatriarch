@@ -18,12 +18,9 @@ public partial class Hooks
         if (room.game.IsPatriarch() && room.abstractRoom.name == "OE_FINAL03" && room.game.world.rainCycle.CycleProgression == 0 && room.game.GetStorySession.saveState.cycleNumber == 0)
         {
             room.AddObject(new OE_FINAL03(room));
-            var message = "ADDED LEADER SPAWN SCRIPT";
-            Debug.Log(message);
-
-            room.game.GetStorySession.saveState.miscWorldSaveData.moonGivenRobe = true;
             room.game.GetStorySession.saveState.miscWorldSaveData.moonHeartRestored = true;
-            //game.GetStorySession.saveState.miscWorldSaveData.pebblesEnergyTaken = true;
+            room.game.GetStorySession.saveState.miscWorldSaveData.moonGivenRobe = true;
+            room.game.GetStorySession.saveState.miscWorldSaveData.pebblesEnergyTaken = true;
 
         }
     }

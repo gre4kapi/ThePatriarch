@@ -45,29 +45,32 @@ public partial class Hooks
         {
             if (OracleCWT.TryGetValue(self, out var Counter) && self.oracleBehavior is SSOracleRotBehavior rotBehavior && rotBehavior.conversation?.events != null && rotBehavior.conversation.id == MoreSlugcatsEnums.ConversationID.Pebbles_RM_FirstMeeting)
             {
-                Counter.Value++;
-                const int StartPain = 1196;
-                const int GiveMark = 1;
-                const int FixPearl = 3670;
-                const int StartSecondPain = FixPearl + 700;
+                if (!PearlWritedSave.pearlWrited)
+                {
+                    Counter.Value++;
+                    const int StartPain = 1196;
+                    const int GiveMark = 1;
+                    const int FixPearl = 3670;
+                    const int StartSecondPain = FixPearl + 700;
 
-                const int test = 100;
-                if (Counter.Value == StartPain)
-                {
-                    self.room.AddObject(new PanicDisplay(self));
-                }
-                if (Counter.Value == GiveMark)
-                {
-                    self.room.AddObject(new PebblesGiveMark(self));
-                }
-                if (Counter.Value == FixPearl)
-                {
-                    self.room.AddObject(new PebblesFixPearl(self));
-                }
-                // Combine fixpearl and second panic display
-                if (Counter.Value == StartSecondPain)
-                {
-                    self.room.AddObject(new PebblesPanicDisplay(self));
+                    const int test = 100;
+                    if (Counter.Value == StartPain)
+                    {
+                        self.room.AddObject(new PanicDisplay(self));
+                    }
+                    if (Counter.Value == GiveMark)
+                    {
+                        self.room.AddObject(new PebblesGiveMark(self));
+                    }
+                    if (Counter.Value == FixPearl)
+                    {
+                        self.room.AddObject(new PebblesFixPearl(self));
+                    }
+                    // Combine fixpearl and second panic display
+                    if (Counter.Value == StartSecondPain)
+                    {
+                        self.room.AddObject(new PebblesPanicDisplay(self));
+                    }
                 }
             }
         }
@@ -81,7 +84,7 @@ public partial class Hooks
         var game = (RWCustom.Custom.rainWorld.processManager.currentMainLoop as RainWorldGame);
         if (CustomConversations.TryGet(self.owner.oracle.room.game, out bool custom) && custom && self.owner.oracle.room.game.session is StoryGameSession session && session.saveState.saveStateNumber.value == Plugin.CAT_NAME)
         {
-            if (PearlWritedSave.pearlWrited)
+            if (!PearlWritedSave.pearlWrited)
             {
                 self.events = new List<Conversation.DialogueEvent>() {
                         new Conversation.TextEvent(self, 1000, "...", 103),

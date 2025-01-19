@@ -16,6 +16,13 @@ partial class Hooks
         On.Player.Update += PlayerUpdate;
         On.Player.Grabability += Player_DualWield;
         On.Player.CanIPickThisUp += Player_DislodgeSpear;
+        On.Player.Jump += TestShit;
+    }
+
+    private static void TestShit(On.Player.orig_Jump orig, Player self)
+    {
+        orig(self);
+        Debug.Log(PearlWritedSave.pearlWrited);
     }
 
     private static bool Player_DislodgeSpear(On.Player.orig_CanIPickThisUp orig, Player self, PhysicalObject obj)
